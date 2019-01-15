@@ -1,3 +1,5 @@
-require File.expand_path('../app/api/v1/api', __FILE__)
+require_relative 'config/application'
+
+use OTR::ActiveRecord::ConnectionManagement
 
 run Application

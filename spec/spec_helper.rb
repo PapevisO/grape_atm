@@ -1,7 +1,8 @@
 ENV['RACK_ENV'] = 'test'
 
 require 'rack/test'
-require_relative '../app/api/v1/api.rb'
+require_relative '../app/api/v1/api'
+require_relative '../config/application'
 Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f }
 
 include Rack::Test::Methods
