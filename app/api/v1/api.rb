@@ -1,3 +1,6 @@
+require_relative 'info'
+require_relative 'setup'
+
 module ATM
   class API < Grape::API
     prefix 'api/v1' # Break RESTfullness, simplify usage
@@ -10,6 +13,7 @@ module ATM
     end
 
     mount ::ATM::Info
+    mount ::ATM::Setup
   end
 end
 
