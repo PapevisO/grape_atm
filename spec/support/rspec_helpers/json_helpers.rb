@@ -4,7 +4,7 @@ module RSpecHelpers
       defaults = {
         symbolize_names: true
       }
-      
+
       JSON.parse(last_response.body, defaults.merge(options))
     end
   end

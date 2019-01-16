@@ -1,5 +1,3 @@
-require 'grape'
-
 module ATM
   class API < Grape::API
     prefix 'api/v1' # Break RESTfullness, simplify usage
@@ -7,9 +5,11 @@ module ATM
     format :json
 
     # Simple endpoint to get the current status of our API.
-    get :status do
+    get :is_alive do
       { status: 'ok' }
     end
+
+    mount ::ATM::Info
   end
 end
 

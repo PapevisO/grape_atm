@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 ruby '2.6.0'
 
 gem 'grape'
+gem 'grape-entity'
 gem "otr-activerecord"
 gem 'sqlite3'
 
