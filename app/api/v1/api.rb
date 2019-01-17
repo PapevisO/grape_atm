@@ -10,7 +10,7 @@ module ATM
 
     # Simple endpoint to get the current status of our API.
     get :is_alive do
-      { status: 'ok' }
+      status 201
     end
 
     mount ::ATM::Info
