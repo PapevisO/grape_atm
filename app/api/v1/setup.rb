@@ -9,7 +9,8 @@ module ATM
           requires :number, type: Integer, desc: 'Number of banknotes'
         end
       end
-      post '/' do
+
+      put '/' do
         Payload.setup(params[:payload])
         status 201
       end

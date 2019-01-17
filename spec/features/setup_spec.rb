@@ -7,7 +7,7 @@ describe 'Setup', type: :feature do
         { nominal: 5, number: 7 }
       ]
     }
-    post 'api/v1/atm', params
+    put 'api/v1/atm', params
     expect(last_response.status).to eq 201
 
     get 'api/v1/atm'
