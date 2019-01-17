@@ -8,11 +8,9 @@ describe 'Setup', type: :feature do
       ]
     }
     post 'api/v1/atm', params
-
     expect(last_response.status).to eq 201
-    payloads = Payload.all
-    expect(payloads.count).to eq 1
-    expect(payloads.first.nominal).to eq 5
-    expect(payloads.first.number).to eq 7
+
+    get 'api/v1/atm'
+    expect(json_response).to match_as_json([{ nominal: 5, number: 7 }])
   end
 end
