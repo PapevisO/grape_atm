@@ -8,7 +8,7 @@ shared_examples 'setupable' do
   end
 
   it 'updates existing record with nominal specified' do
-    described_class.setup([{nominal: 5, number: 2}])
+    described_class.setup([{ nominal: 5, number: 2 }])
     expect(described_class.find_by(nominal: 5).number).to be 2
     expect(described_class.where(nominal: 5).count).to be 1
   end
