@@ -1,10 +1,16 @@
 require 'bundler'
-Bundler.require :default, ENV['RACK_ENV'] || 'development'
-
+require 'rubygems'
 require 'grape'
-# Dir[__dir__  + '/../app/entities/**/*.rb'].each { |f| require f }
-# Dir[__dir__  + '/../app/lib/**/*.rb'].each { |f| require f }
-# Dir[__dir__  + '/../app/models/**/*.rb'].each { |f| require f }
+
+RACK_ENV = (ENV['RACK_ENV'] || 'development').to_sym
+Bundler.require
+
+%w[entries lib models].each do |nested|
+  Dir[__dir__ + "/../app/#{nested}/**/*.rb"].each do |path|
+    puts "path to require: #{path}"
+    require path
+  end
+end
 require_relative(__dir__ + '/../app/api/atm.rb')
 
-# OTR::ActiveRecord.configure_from_file! File.expand_path('database.yml', __dir__)
+OTR::ActiveRecord.configure_from_file! File.expand_path('database.yml', __dir__)

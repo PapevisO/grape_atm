@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  database: dbruby
+  host: <%= ENV.fetch("MYSQL_DB_HOST", '127.0.0.1') %>
+  port: <%= ENV.fetch("MYSQL_DB_PORT", '3306') %>
+  username: <%= ENV.fetch("MYSQL_DB_USERNAME", 'root') %>
+  password: <%= ENV.fetch("MYSQL_DB_PASSWORD", '1234') %>
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: dbruby_development
+
+test:
+  <<: *default
+  database: dbruby_test
+
+production:
+  <<: *default
+  database: dbruby_production

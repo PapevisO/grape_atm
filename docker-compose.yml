@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  #   ruby:
+  #     build: ./
+  #     image: ruby
+  #     volumes:
+  #       - .:/app
+  #     ports:
+  #       - "3000:3000"
+  #     entrypoint: /bin/sh -c "shotgun config.ru -p$${APP_PORT} -s$${APP_SERVER} -o$${APP_HOST}"
+  #     links:
+  #       - db
+  #
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: dbruby
+      MYSQL_ROOT_PASSWORD: 1234
+    volumes:
+      - ./db/data:/var/lib/mysql

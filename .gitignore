@@ -6,6 +6,8 @@
 !/log/.keep
 /tmp
 
+/db/data
+
 # IDE specific
 .idea/
 

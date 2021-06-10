@@ -4,6 +4,8 @@ require 'bundler/setup'
 require 'grape'
 require_relative 'config/application'
 
+use OTR::ActiveRecord::ConnectionManagement
+
 map '/api/v1' do
   run ATM::API
 end
