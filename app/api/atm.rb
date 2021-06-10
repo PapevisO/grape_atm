@@ -8,5 +8,14 @@ module ATM
     get :is_alive do
       status 201
     end
+
+    add_swagger_documentation \
+      info: {
+        title: 'ATM API'
+      },
+      hide_documentation_path: true,
+      mount_path: '/swagger_doc',
+      markdown: false,
+      api_version: 'v1'
   end
 end
