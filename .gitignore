@@ -1,0 +1,16 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+
+# IDE specific
+.idea/
+
+#mac_os specific
+*.DS_Store
+
+#ruby version and gem
+.ruby-*
