@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.6.6'
 
 gem 'grape'
+gem 'grape-entity'
 gem 'grape-swagger', '~> 1.4'
 gem 'mysql2'
 gem 'otr-activerecord'

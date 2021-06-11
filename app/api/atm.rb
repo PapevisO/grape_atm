@@ -9,6 +9,10 @@ module ATM
       status 201
     end
 
+    mount ::ATM::Info
+    mount ::ATM::Setup
+    mount ::ATM::Withdraw
+
     add_swagger_documentation \
       info: {
         title: 'ATM API'

@@ -2,31 +2,87 @@
 
 ## Requirements
 
-- [ ] There should be a function of depositing money into an ATM - the number of bills of each denomination is sent (for example, 10 bills by "50", 8 by "25", etc.). Denominations are: 1, 2, 5, 10, 25, 50.
+- [x] Implement functionality of depositing money into an ATM - the quantity of banknotes for each denomination is specified (for example, 10 in "50", 8 in "25", etc.). Denominations are: 1, 2, 5, 10, 25, 50.
 
-- [ ] Implement a method that accepts an amount for issue and returns the required denominations. If the ATM does not have enough money for issuing, the user should receive a message about this.
+- [x] Implement a method that accepts an amount for withdrawal and returns the set of required denominations and the quantities. If any ATM cassettes balance is insufficient for withdrawal, the user should be notified.
 
-For example, if there is a request for the issue of UAH 200, and there are 3 bills of 50 and 4 of 25 in stock, then the result may be as follows: {50 => 3, 25 => 2} or {50 => 2, 25 => four}.
+- [x] Transaction is canceled in case of insufficient balance.
 
-- [ ] The amount of money on hand should decrease after each issue.
+For example, if there is an application to withdraw 200 UAH, and the cassettes balances are 3 in 50 and 4 in 25, then the result accepted results could read as follows: {50 => 3, 25 => 2} or {50 => 2, 25 => 4}.
 
-- [ ] Design the task in the form of a RESTful API. The framework is at the candidate's choice.
+- [x] The cassettes balances should be deducted accordingly.
+
+- [x] Design the task in the form of a RESTful API. The framework is at the candidate's choice.
 
 ## Prototype Atm api
 
 ### Setup
 
-    bundle
-    rake db:migrate
-    rake db:test:prepare
-    rackup -p 3000
+```bash
+bundle
+rake db:create
+rake db:migrate
+rspec
+rackup
+```
 
-According to above setting application runs at localhost:3000
+According to above setting application runs at localhost:9292 by default.
+Add port parameter to override the default port.
+
+```
+rackup -p 3000
+```
 
 ### Endpoints
 
-#### Alive probe
+#### Health status endpoint
 
-GET [api/v1/is_alive](http://localhost:9292/api/v1/is_alive "api/v1/is_alive")
+GET [api/v1/is_alive](http://localhost:3000/api/v1/is_alive "api/v1/is_alive")
 Responds with status to 201 on success
 
+#### Current ATM state
+
+GET [api/v1/atm](http://localhost:3000/api/v1/atm "api/v1/atm")
+Responds with array of present denominations and their quantity, e.g:
+
+```json
+[
+  {
+    "denomination": 5,
+    "quantity": 2
+  }
+]
+```
+
+#### Setup atm with payload
+
+PUT [api/v1/atm](http://localhost:3000/api/v1/atm "api/v1/atm")
+
+```json
+{
+  "payload": {
+    "denomination": 5,
+    "quantity": 2
+  }
+}
+```
+
+Responds with status 201 on success.
+
+#### Withdraw founds
+
+POST [api/v1/atm/withdraw](http://localhost:3000/api/v1/atm/withdraw "api/v1/atm/withdraw")
+
+```json
+{
+  "amount": 10
+}
+```
+
+Responds with denominations ejected
+
+```json
+{
+  "5": 2
+}
+```
