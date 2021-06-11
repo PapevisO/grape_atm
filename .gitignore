@@ -16,3 +16,5 @@
 
 #ruby version and gem
 .ruby-*
+coverage/.resultset.json
+coverage/.resultset.json.lock

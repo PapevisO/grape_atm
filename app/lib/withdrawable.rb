@@ -32,11 +32,11 @@ module Withdrawable
   def get_general_error(amount)
     return 'Wat?' if amount < 1
 
-    return 'Cassette balance is insufficient' if amount > total
+    return 'ATM balance is insufficient' if amount > total
   end
 
   def get_unmatched_amount_error(denominations)
-    return 'The amount temporarily cannot be matched' unless denominations
+    return 'The amount temporarily cannot be exactly matched' unless denominations
   end
 
   # The modified version of algorythm from https://github.com/joshuapaling/ruby-atm-microcourse/blob/master/step7_solution.rb

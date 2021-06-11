@@ -18,31 +18,55 @@ For example, if there is an application to withdraw 200 UAH, and the cassettes b
 
 ### Setup
 
+Deploy mysql server in docker container
+
+##### Requirements
+
+- docker
+- docker-compose
+- localhost port 3306 not occupied and available for mapping
+- Ruby 2.6.6, modify in Gemfile in order to use another 2.6.x version
+- Bundler 2.0.1 preferred
+
+##### Prepare and run in development environment
+
 ```bash
-bundle
+docker-compose up -d
+docker-compose logs -f
+bundle install
 rake db:create
 rake db:migrate
-rspec
 rackup
+```
+
+##### Prepare and run tests
+
+```bash
+docker-compose up -d
+docker-compose logs -f
+bundle install
+RAILS_ENV=development rake db:create
+RAILS_ENV=development rake db:migrate
+rspec
 ```
 
 According to above setting application runs at localhost:9292 by default.
 Add port parameter to override the default port.
 
 ```
-rackup -p 3000
+rackup -p 9292
 ```
 
 ### Endpoints
 
 #### Health status endpoint
 
-GET [api/v1/is_alive](http://localhost:3000/api/v1/is_alive "api/v1/is_alive")
+GET [api/v1/is_alive](http://localhost:9292/api/v1/is_alive "api/v1/is_alive")
 Responds with status to 201 on success
 
 #### Current ATM state
 
-GET [api/v1/atm](http://localhost:3000/api/v1/atm "api/v1/atm")
+GET [api/v1/atm](http://localhost:9292/api/v1/atm "api/v1/atm")
 Responds with array of present denominations and their quantity, e.g:
 
 ```json
@@ -56,7 +80,7 @@ Responds with array of present denominations and their quantity, e.g:
 
 #### Setup atm with payload
 
-PUT [api/v1/atm](http://localhost:3000/api/v1/atm "api/v1/atm")
+PUT [api/v1/atm](http://localhost:9292/api/v1/atm "api/v1/atm")
 
 ```json
 {
@@ -71,7 +95,7 @@ Responds with status 201 on success.
 
 #### Withdraw founds
 
-POST [api/v1/atm/withdraw](http://localhost:3000/api/v1/atm/withdraw "api/v1/atm/withdraw")
+POST [api/v1/atm/withdraw](http://localhost:9292/api/v1/atm/withdraw "api/v1/atm/withdraw")
 
 ```json
 {
