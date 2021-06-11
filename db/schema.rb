@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_111934) do
-
-  create_table "payloads", charset: "utf8", force: :cascade do |t|
-    t.integer "denomination"
-    t.integer "quantity"
+ActiveRecord::Schema.define(version: 20_190_115_111_934) do
+  create_table 'payloads', charset: 'utf8', force: :cascade do |t|
+    t.integer 'denomination'
+    t.integer 'quantity'
   end
-
 end
