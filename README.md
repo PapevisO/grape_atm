@@ -20,7 +20,7 @@ For example, if there is an application to withdraw 200 UAH, and the cassettes b
 
 Deploy mysql server in docker container
 
-##### Requirements
+#### Pre-requirements
 
 - docker
 - docker-compose
@@ -28,7 +28,9 @@ Deploy mysql server in docker container
 - Ruby 2.6.6, modify in Gemfile in order to use another 2.6.x version
 - Bundler 2.0.1 preferred
 
-##### Prepare and run in development environment
+#### Prepare and run
+
+##### in development environment
 
 ```bash
 docker-compose up -d
@@ -39,7 +41,7 @@ rake db:migrate
 rackup
 ```
 
-##### Prepare and run tests
+##### tests
 
 ```bash
 docker-compose up -d
@@ -53,7 +55,7 @@ rspec
 According to above setting application runs at localhost:9292 by default.
 Add port parameter to override the default port.
 
-```
+```bash
 rackup -p 9292
 ```
 

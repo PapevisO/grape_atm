@@ -4,7 +4,7 @@ require 'rack/test'
 require 'shoulda/matchers'
 require 'database_cleaner'
 require_relative '../config/application'
-Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f }
+Dir[File.dirname(__FILE__) + '/support/**/*.rb'].sort.each { |f| require f }
 
 include Rack::Test::Methods
 
